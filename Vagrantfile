@@ -2,6 +2,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/bionic64"
 #  config.vm.box_version = "20181210.01"
   config.ssh.forward_agent = true
+  config.vagrant.plugins = [ "vagrant-vbguest" ]
 
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 8443, host: 8443
