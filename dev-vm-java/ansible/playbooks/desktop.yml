@@ -1,0 +1,19 @@
+---
+- hosts: all
+  environment: "{{proxy_env}}"
+
+  tasks:
+  - name: install german language pack
+    become: true
+    package: name={{item}} state=present
+    with_items:
+    - language-pack-de
+
+#  -  name: setting keyboard layout
+#     command: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'de')]"
+
+  roles:
+    - role: gantsign.keyboard
+      become: true
+      keyboard_model: pc105
+      keyboard_layout: de
