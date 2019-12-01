@@ -1,0 +1,6 @@
+- import_playbook: docker.yml
+  tags: [ docker ]
+- import_playbook: desktop.yml
+  tags: [ desktop ]
+- import_playbook: desktop.yml
+  tags: [ java ]

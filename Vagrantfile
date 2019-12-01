@@ -3,14 +3,12 @@ Vagrant.configure(2) do |config|
 #  config.vm.box_version = "20181210.01"
   config.ssh.forward_agent = true
 
-  config.vm.network "forwarded_port", guest: 22, host: 22
-  config.vm.network "forwarded_port", guest: 80, host: 80
-  config.vm.network "forwarded_port", guest: 443, host: 443
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8443, host: 8443
 
   config.vm.synced_folder "./", "/vagrant"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "dev-vm"
     vb.gui = true
     vb.customize ["modifyvm", :id, "--monitorcount", "1"]
     vb.memory = "8196"
@@ -21,6 +19,8 @@ Vagrant.configure(2) do |config|
     ansible.become = true
     ansible.config_file = "/vagrant/ansible/ansible.cfg"
     ansible.playbook = "/vagrant/ansible/playbooks/provision.yml"
+    ansible.tags = "docker"
+    #ansible.tags = "docker,desktop"
     ansible.galaxy_role_file = "/vagrant/ansible/requirements.yml"
     ansible.galaxy_roles_path = "/etc/ansible/roles"
     ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
