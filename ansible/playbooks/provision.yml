@@ -2,5 +2,5 @@
   tags: [ docker ]
 - import_playbook: desktop.yml
   tags: [ desktop ]
-- import_playbook: desktop.yml
+- import_playbook: java.yml
   tags: [ java ]
