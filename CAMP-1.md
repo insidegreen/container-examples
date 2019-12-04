@@ -1,10 +1,17 @@
 
 
-
-
 # 1. Run "hello-world" from Docker Hub
 
 # 2. Run Nginx from Docker Hub
+
+- run nginx
+  - docker run -p 8080:80 -d nginx
+- check with Browser
+- open shell in container
+- edit index.html
+- change index.html
+- run Container again
+- persist index.html
 
 # 3. Run a Jenkins Container
 
