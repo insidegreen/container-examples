@@ -2,7 +2,13 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/bionic64"
 #  config.vm.box_version = "20181210.01"
   config.ssh.forward_agent = true
-  config.vagrant.plugins = [ "vagrant-vbguest" ]
+  config.vagrant.plugins = [ "vagrant-vbguest", "vagrant-proxyconf" ]
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http     = "http://frcvdb002.conti.de:3128"
+    config.proxy.https    = "http://frcvdb002.conti.de:3128"
+    config.proxy.no_proxy = "localhost,127.0.0.1,.conti.de"
+  end
 
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 8443, host: 8443

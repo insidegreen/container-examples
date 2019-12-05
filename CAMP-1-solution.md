@@ -3,7 +3,9 @@
 # 1. Run "hello-world" from Docker Hub
 
 - Search for the image "hello-world"
+  - ```docker search hello-world```
 - Create a container and run hello-world
+  - 
 - List running containers
 - List all containers
 - What's the name of your "hello-world" Container?
