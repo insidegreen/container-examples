@@ -74,6 +74,8 @@ docker stop 98c
 docker start webserver
 
 docker rm webserver # removes the container webserver -  needs to be stopped
+
+docker rm $(docker ps -a -q ) # delete all stopped containers
 ```
 
 __Run a command in a running Container__
